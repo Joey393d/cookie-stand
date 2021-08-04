@@ -25,11 +25,15 @@ function Info(locationName, minCustomerPerHour, maxCustomerPerHour, avgCookiesPe
   this.minCustomerPerHour = minCustomerPerHour;
   this.maxCustomerPerHour = maxCustomerPerHour;
   this.avgCookiesPerSale = avgCookiesPerSale;
+  this.cookiesPerHour = [];
+  this.customersEachHour = [];
+  this.totalDailyCookies = 0;
+
 };
 
 
 Info.prototype.setcustomersEachHour = function(){
-  this.customers = randomCustomers(23, 65) + ' customers';
+  this.customers = randomCustomers();
 }
 
 
