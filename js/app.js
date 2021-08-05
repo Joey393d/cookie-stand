@@ -3,7 +3,7 @@ console.log('the app js file is connected');
 
 
 
-
+let storeCreator = Shop
 
 // Location	Min / Cust	Max / Cust	Avg Cookie / Sale
 
@@ -16,7 +16,7 @@ const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm',
 
 const cookiesTotalHour = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-tableElement.document.getElementById('salesInfo');
+const tableElement = document.getElementById('salesInfo');
 
 function Shop(locationName, minimumCustomerPerHour, maximumCustomerPerHour, averageCookiesPerSale){
   this.locationName = locationName;
@@ -26,7 +26,7 @@ function Shop(locationName, minimumCustomerPerHour, maximumCustomerPerHour, aver
   this.customersEachHour = [];
   this.cookiesEachHour = [];
   this.totalDailyCookies = 0;
-  storeCreator.allStoresArray.push(this)
+  Shop.cookieShop.push(this)
 }
 
 
@@ -79,7 +79,7 @@ Shop.prototype.render = function(){
   shopsRow.appendChild(cookieTotal);
 };
 
-storeCreator.allStoresArray = [];
+Shop.cookieShop = [];
 
 let seattle = new Shop('Seattle', 23, 65, 6.3);
 let tokyo = new Shop('Tokyo', 3, 24, 1.2);
@@ -105,9 +105,9 @@ paris.getCookies();
 lima.calcCustomersEveryHour();
 lima.getCookies();
 
-for (let i = 0; i < storeCreator.allStoresArray.cookieShop.length; i++){
+for (let i = 0; i < Shop.cookieShop.length; i++){
   console.log(salesInfo[i]);
-  storeCreator.allStoresArray[i].cookieShop[i].render();
+  Shop.cookieShop[i].render();
   makeFooterRow();
 }
 
@@ -136,6 +136,40 @@ function makeHeaderRow(){
 
 
 
+function makeFooterRow(){
+  const tableRow = document.createElement('tr');
+  let tableHeaderElement = document.createElement('th');
+  tableHeaderElement.textContent = 'Hourly totals';
+  tableRow.appendChild(tableHeaderElement);
+  
+  let totalOfTotals = 0;
+
+  for(let i = 0; i < hours.length; i++){
+   
+    let hourlyTotals = 0;
+    
+    
+    for(let j = 0; j < storeCreator; j++){
+    hourlyTotals += Shop.allStoresArray[j].cookiesEachHour[i]
+    totalOfTotals += storeCreator.allStoresArray[j].cookiesEachHour[i]
+    
+  
+    
+    tableHeaderElement = document.createElement('th');
+    tableHeaderElement.textContent = hourlyTotals;
+    tableRow.appendChild(tableHeaderElement);
+    }
+
+  }
+  
+
+
+
+  tableElement.appendChild(tableRow);
+}
+
+
+
 //////////form//////////
 
 
@@ -143,6 +177,45 @@ function makeHeaderRow(){
 
 
 //////////add an event listener//////////
+
+
+function handleFormSubmitted(event){
+  event.preventDefault();
+
+  console.log('this is the event', event);
+
+  let nameInput = document.getElementById("name");
+    let nameValue = nameInput['value'];
+    console.log('this is name value', nameValue);
+
+  let minInput = document.getElementById("min");
+    let minValue = minInput['value'];
+  console.log('this is min value', minValue);
+
+  let maxInput = document.getElementById("max");
+    let maxValue = maxInput['value'];
+  console.log('this is max value', maxValue);
+
+  let avgInput = document.getElementById("avg");
+    let avgValue = avgInput['value'];
+  console.log('this is avg cookie value', avgValue);
+  
+
+  let newShop = new Shop(nameValue, minValue, maxValue, avgValue)
+  
+  newShop.calcCustomersEveryHour();
+  newShop.getCookies();
+  newShop.render();
+}
+
+
+
+
+
+let formElement = document.getElementById("newStore");
+formElement.addEventListener('submit', handleFormSubmitted);
+
+
 
 
 
