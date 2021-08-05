@@ -28,6 +28,7 @@ Shop.prototype.calcCustomersEveryHour = function(){
 };
 
 Shop.prototype.getCookies = function(){
+  this.calcCustomersEveryHour();
   for(let i = 0; i < hours.length; i++){
     this.cookiesEachHour[i] = Math.ceil(this.customersEachHour[i] * this.averageCookiesPerSale);
   }
@@ -40,6 +41,7 @@ function getRandomCustomers(min, max){
 
 
 Shop.prototype.render = function(){
+  this.getCookies();
   let parentElement = document.getElementById('salesInfo');
   console.log(parentElement);
   let shopsRow = document.createElement('tr');
@@ -160,9 +162,12 @@ function makeHeaderRow(){
 
 (function renderAllStores(){
   makeHeaderRow();
-  // for (let i = 0; i < Shop.cookieShop.length; i++){
-  //   Shop.cookieShop[i].render();
-  // }
+  for (let i = 0; i < Shop.cookieShop.length; i++){
+    Shop.cookieShop[i].render();
+    console.log(Shop.cookieShop[i]);
+  }
+
+
   // makeFooterRow();
 })();
 
