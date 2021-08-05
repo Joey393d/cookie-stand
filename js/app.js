@@ -149,9 +149,9 @@ function makeFooterRow(){
     let hourlyTotals = 0;
     
     
-    for(let j = 0; j < storeCreator; j++){
+    for(let j = 0; j < Shop; j++){
     hourlyTotals += Shop.allStoresArray[j].cookiesEachHour[i]
-    totalOfTotals += storeCreator.allStoresArray[j].cookiesEachHour[i]
+    totalOfTotals += Shop.allStoresArray[j].cookiesEachHour[i]
     
   
     
