@@ -16,6 +16,8 @@ const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm',
 
 const cookiesTotalHour = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+tableElement.document.getElementById('salesInfo');
+
 function Shop(locationName, minimumCustomerPerHour, maximumCustomerPerHour, averageCookiesPerSale){
   this.locationName = locationName;
   this.minimumCustomerPerHour = minimumCustomerPerHour;
@@ -24,6 +26,7 @@ function Shop(locationName, minimumCustomerPerHour, maximumCustomerPerHour, aver
   this.customersEachHour = [];
   this.cookiesEachHour = [];
   this.totalDailyCookies = 0;
+  storeCreator.allStoresArray.push(this)
 }
 
 
@@ -67,10 +70,16 @@ Shop.prototype.render = function(){
 
     }
 
+    this.calcCustomersEveryHour();
+
+
+
     let cookieTotal = document.createElement('td');
   cookieTotal.textContent = this.totalDailyCookies;
   shopsRow.appendChild(cookieTotal);
 };
+
+storeCreator.allStoresArray = [];
 
 let seattle = new Shop('Seattle', 23, 65, 6.3);
 let tokyo = new Shop('Tokyo', 3, 24, 1.2);
@@ -96,7 +105,45 @@ paris.getCookies();
 lima.calcCustomersEveryHour();
 lima.getCookies();
 
-for (let i = 0; i < cookieShop.length; i++){
+for (let i = 0; i < storeCreator.allStoresArray.cookieShop.length; i++){
   console.log(salesInfo[i]);
-  cookieShop[i].render();
+  storeCreator.allStoresArray[i].cookieShop[i].render();
+  makeFooterRow();
 }
+
+
+function makeHeaderRow(){
+  const tableRow = document.createElement('tr');
+  let tableHeaderElement = document.createElement('th');
+  tableHeaderElement.textContent = 'Locations';
+  tableRow.appendChild(tableHeaderElement);
+
+
+  for(let i = 0; i < hours.length; i++){
+    let tableHeaderElement = document.createElement('th')
+    tableHeaderElement.textContent = hours[i];
+    tableRow.appendChild(tableHeaderElement);
+  }
+
+
+  tableHeaderElement = document.createElement('th');
+  tableHeaderElement.textContent = 'Location Totals';
+  tableRow.appendChild(tableHeaderElement);
+  tableElement.appendChild(tableRow);
+}
+
+
+
+
+
+//////////form//////////
+
+
+
+
+
+//////////add an event listener//////////
+
+
+
+
