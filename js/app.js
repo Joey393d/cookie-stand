@@ -161,6 +161,8 @@ function makeHeaderRow(){
 
 
 (function renderAllStores(){
+
+  
   makeHeaderRow();
   for (let i = 0; i < Shop.cookieShop.length; i++){
     Shop.cookieShop[i].render();
