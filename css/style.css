@@ -6,9 +6,20 @@ p{
   background-color: #cbc0d3 ;
   border-radius:10px;
   width: 100px;
-  
+  margin: 10px;
+  padding: 3px
 }
 
 h2{
   border: #4a4e69;
+}
+
+img{
+  height: auto;
+  width: 100px;
+}
+
+
+table {
+  margin-bottom: 200px;
 }

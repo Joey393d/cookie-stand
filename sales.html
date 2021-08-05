@@ -8,6 +8,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -32,10 +33,10 @@
     </ul>
     
     <table id="salesInfo">
-      <thead id="shopeHoursHead">
+      <thead id="shopHoursHead">
         <tr id="shopHoursRow"></tr>
-        <th>Shop Location |</th>
-              <th>6am |</th>
+        <!-- <th>Shop Location |</th> -->
+              <!-- <th>6am |</th>
               <th>7am |</th>
               <th>8am |</th>
               <th>9am |</th>
@@ -49,12 +50,38 @@
               <th>5pm |</th>
               <th>6pm |</th>
               <th>7pm |</th>
-              <th>Shop Daily Total</th>
+              <th>Shop Daily Total</th> -->
       </thead>
       
     </table>
 
+    <form id="newStore">
+      <Fieldset>
+
+      <legend>Add new store</legend>
+
+      <label for="name">Store Location:</label>
+      <input id="name" type=text required/>
+
+
+      <label for="min">Minimum customers an hour:</label>
+      <input id="min" type=number required/>
+
+      <label for="max">Maximum customers an hour:</label>
+      <input id="max" type=number required/>
+      
+      <label for="avg">Average cookies per customer:</label>
+      <input id="avg" type=number required/>
+
+    </Fieldset>
+      <button type="reset" value="reset">Reset Form</button>
+      <button type="submit" value="submit">Submit Form</button>
+    </form>
+
+
 
     <script src="js/app.js"></script>
+
+
   </body>
 </html>
